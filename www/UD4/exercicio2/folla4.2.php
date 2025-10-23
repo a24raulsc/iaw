@@ -93,10 +93,15 @@
 </article>
 <form method="get" action="folla4.2.php">
 	<br><br>
-	<textarea name="text" rows="4" cols="50"></textarea>
+	<textarea name="texten" rows="4" cols="50" placeholder="'Titulo', 'autor', 'ano', 'duracion', 'imaxe'"></textarea>
 	<br>
 	<button type="input" name="engadir">Engadir rexistro</button>
+	<br><br><br>
+	<textarea name="textel" rows="4" cols="50" placeholder="Titulo"></textarea>
+	<br>
 	<button type="input" name="borrar">Eliminar rexistro</button>
+	<br><br>
+	
 	<button type="input" name="modificar">Modificar rexistro</button>
 </form>
 <?php
@@ -104,27 +109,26 @@
 	$consulta2 = '';	
 		
 	if (isset($_GET['engadir'])) {
-		$texto = $_GET['text'];
+		$texto = $_GET['texten'];
 		$consulta2 = "INSERT INTO `tema` (`Titulo`, `Autor`, `Ano`, `Duracion`, `Imaxe`) VALUES ($texto)";
 	}
 	if (isset($_GET['borrar'])) {
-		$texto = $_GET['text'];
+		$texto = $_GET['textel'];
 		$consulta2 = "DELETE FROM `tema` WHERE `Titulo` = '$texto'";
 	}
 	if (isset($_GET['modificar'])) {
-		$texto = $_GET['text'];
-		$consulta2 = "UPDATE `tema` SET `Titulo`='$texto' WHERE `Titulo`='$texto'";
+		$textoup = $_GET['textup'];
+		$consulta2 = "UPDATE `tema` SET `textoup`='$texto' WHERE `Titulo`='$texto'";
 	}
 
 	if ($consulta2 != '') {
         mysqli_set_charset($conexion, "utf8");
         $resultado = mysqli_query($conexion, $consulta2);
             if ($resultado != false) {
-                while(list($Titulo,$Autor,$Ano,$Duracion,$srcImaxe) = mysqli_fetch_array ( $resultado ) ){
-                    echo "<div class='tema'><img src='imaxes/$srcImaxe.jpg'><br>$Titulo<br>$Autor<br>$Ano<br>$Duracion</div>";
-                }
+                echo"<h1>Modificación correcta<h1>";
             }
-        }
+    }
+
 ?>
 </body>
 </html>
