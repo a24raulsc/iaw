@@ -1,0 +1,17 @@
+table{
+    margin: 0 auto;
+    width: 33%;
+    border-collapse: collapse;
+}
+
+td{
+    border: solid 2px black;
+    text-align: center;
+    width: 20%;
+    height: 40px;
+}
+
+.tr1{
+    background-color: black;
+    color: white;
+}

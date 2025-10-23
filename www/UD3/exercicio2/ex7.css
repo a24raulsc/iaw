@@ -1,0 +1,20 @@
+.tr3{
+    background-color: black;
+    color: yellow;
+}
+
+table{
+    margin: 0 auto;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.tr1{
+    background-color: grey;
+    color: white;
+}
+
+td{
+    border: solid 2px black;
+    width: 100px;
+}

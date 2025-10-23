@@ -1,0 +1,70 @@
+/* Reset y base */
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; font-family: Arial, Helvetica, sans-serif; background: #888; }
+
+/* Columna central verde (simula la zona principal de la imagen) */
+.site {
+  width: 1500px;
+  margin: 0 auto;
+  background: #0b7c11; /* verde */
+  min-height: 100vh;
+}
+
+/* Topbar negra con imagen a todo ancho */
+.topbar { background: #000; height: 72px; display:flex; align-items:center; }
+.topbar img { display:block; height:72px; width:100%; object-fit:cover; }
+
+/* Banda verde delgada (ya es parte de la columna, se puede usar para separación) */
+.green-strip { height: 12px; background: #0b7c11; }
+
+/* Layout principal: poster a la izquierda y sidebar a la derecha */
+.main { display:flex; gap:24px; padding:18px 24px; }
+.main .left { flex: 0 0 680px; }
+.main .right { width: 260px; }
+.poster { width: 680px; max-width:100%; height:auto; display:block; }
+
+/* Sidebar: formulario con botones en bloque */
+.sidebar { color:#fff; }
+.sidebar label { display:block; margin:0 0 8px 0; color:#fff; font-weight:600; }
+.sidebar input[type="text"], .sidebar input[type="number"] { width:100%; padding:6px; margin-bottom:8px; border-radius:3px; border:1px solid #ccc; }
+.sidebar button { display:inline-block; padding:6px 10px; border-radius:3px; border:1px solid #777; background:#eee; color:#111; cursor:pointer; }
+.sidebar .actions button { display:block; width:100%; margin:6px 0; text-align:left; }
+.sidebar hr { border:0; border-top:1px solid rgba(255,255,255,0.25); margin:10px 0; }
+
+/* Área de la tabla: centrada y con bordes blancos */
+.table-area { padding: 28px 30px 48px 30px; }
+.movie-table { width: 700px; margin: 24px auto 0; border-collapse: collapse; }
+.movie-table th, .movie-table td { border:1px solid #fff; padding:8px 12px; color:#fff; }
+.movie-table th { background: rgba(0,0,0,0.08); font-weight:700; }
+.movie-table td { background: rgba(255,255,255,0.02); }
+.count-note { text-align:center; color:#fff; margin-top:16px; }
+
+.site-footer { height:30px; }
+
+/* Responsive */
+@media (max-width: 1000px) { .site { width:92%; } .movie-table { width:100%; } }
+@media (max-width: 700px) { .main { flex-direction:column; } .main .left, .main .right { width:100%; } }
+
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+th {
+    border: 1px solid white;
+    padding: 8px 12px;
+    color: rgb(8, 218, 8);
+}
+
+td {
+    border: 1px solid white;
+    padding: 8px 12px;
+    color: white;
+    width: auto;
+}
+
+.centrar {
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    margin-top: 20px;
+}

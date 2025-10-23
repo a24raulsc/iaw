@@ -1,0 +1,19 @@
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+    width: 30%; 
+}
+
+th{
+    padding: 10px;
+    background-color: grey;
+}
+
+.blanco{
+    background-color: white;
+}
+.negro{
+    background-color: black;
+    color: yellow;
+}
