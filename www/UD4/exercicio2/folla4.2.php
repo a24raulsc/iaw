@@ -63,13 +63,13 @@
 	elseif (isset($_GET['ordenarA'])) {
 		$consulta = "SELECT * FROM tema ORDER BY Autor";
 	}
-	elseif (isset($_GET['autor']) && $_GET['autor'] == 'The Beatles') {
+	elseif (isset($_GET['filtrar']) && $_GET['autor'] == 'The Beatles') {
 		$consulta = "SELECT * FROM tema WHERE Autor='The Beatles'";
 	}
-	elseif (isset($_GET['autor']) && $_GET['autor'] == 'The Rolling Stones') {
+	elseif (isset($_GET['filtrar']) && $_GET['autor'] == 'The Rolling Stones') {
 		$consulta = "SELECT * FROM tema WHERE Autor='The Rolling Stones'";
 	}
-	elseif (isset($_GET['autor']) && $_GET['autor'] == 'Outros') {
+	elseif (isset($_GET['filtrar']) && $_GET['autor'] == 'Outros') {
 		$consulta = "SELECT * FROM tema WHERE Autor!='The Beatles' AND Autor!='The Rolling Stones'";
 	}
 
@@ -101,7 +101,8 @@
 	<br>
 	<button type="input" name="borrar">Eliminar rexistro</button>
 	<br><br>
-	
+	<textarea name="fila" rows="4" cols="20" placeholder="Fila"></textarea> <textarea name="valor" rows="4" cols="20" placeholder="Nuevo valor"></textarea> <textarea name="textotit" rows="4" cols="20" placeholder="Titulo de lo que quieres modificar"></textarea>
+	<br><br>
 	<button type="input" name="modificar">Modificar rexistro</button>
 </form>
 <?php
@@ -110,15 +111,17 @@
 		
 	if (isset($_GET['engadir'])) {
 		$texto = $_GET['texten'];
-		$consulta2 = "INSERT INTO `tema` (`Titulo`, `Autor`, `Ano`, `Duracion`, `Imaxe`) VALUES ($texto)";
+		$consulta2 = "INSERT INTO tema (Titulo, Autor, Ano, Duracion, Imaxe) VALUES ($texto)";
 	}
 	if (isset($_GET['borrar'])) {
 		$texto = $_GET['textel'];
 		$consulta2 = "DELETE FROM `tema` WHERE `Titulo` = '$texto'";
 	}
 	if (isset($_GET['modificar'])) {
-		$textoup = $_GET['textup'];
-		$consulta2 = "UPDATE `tema` SET `textoup`='$texto' WHERE `Titulo`='$texto'";
+		$fila= $_GET['fila'];
+		$textotit = $_GET['textotit'];
+		$value = $_GET['valor'];
+		$consulta2 = "UPDATE `tema` SET $fila='$value' WHERE `Titulo`='$textotit'";
 	}
 
 	if ($consulta2 != '') {
