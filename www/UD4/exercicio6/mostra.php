@@ -54,28 +54,37 @@
 		echo "Erro ao conectar co servidor MySQL: ". $e->getMessage();
 	}
 
-	if (isset($_GET["todo"]))
+	if (isset($_GET["todo"])) {
 		$pdoStatement = $pdo->prepare("SELECT *  FROM material");
+	}
 
-    if (isset($_GET["marca"]))
+    if (isset($_GET["marca"])) {
 		$pdoStatement = $pdo->prepare("SELECT *  FROM material ORDER BY Marca");
+	}
 
-	if (isset($_GET["prezo"]))
+	if (isset($_GET["prezo"])) {
 		$pdoStatement = $pdo->prepare("SELECT * FROM material ORDER BY prezo");
-	
-	if (!empty($_GET['buscarMarca']))
+	}
+
+	if (!empty($_GET['buscarMarca'])) {
 		$buscarMarca = "%" . $_GET["buscarMarca"] . "%";
 		$pdoStatement = $pdo->prepare("SELECT * FROM material WHERE Marca like :marca");
 		$pdoStatement->bindParam(':marca', $buscarMarca);
+	}
 
-	if (!empty($_GET['buscarcualquiera']))
+	if (!empty($_GET['buscarcualquiera'])) {
 		$buscarMarca = "%" . $_GET["buscarcualquiera"] . "%";
 		$pdoStatement = $pdo->prepare("SELECT * FROM material WHERE Marca like :marca or Tipo like :tipo or Nome like :nome or Prezo like :prezo");
 		$pdoStatement->bindParam(':marca', $buscarMarca);
 		$pdoStatement->bindParam(':tipo', $buscarMarca);
 		$pdoStatement->bindParam(':nome', $buscarMarca);
 		$pdoStatement->bindParam(':prezo', $buscarMarca);
+	}
 
+	if(isset($_GET['tipo'])) {
+		$tipo = $_GET['tipo'];
+		$pdoStatement = $pdo->prepare("SELECT * FROM material WHERE Tipo = '$tipo'");
+	}
 	
 	$pdoStatement->execute();
 
