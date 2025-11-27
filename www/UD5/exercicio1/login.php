@@ -1,3 +1,12 @@
+<?php
+    session_start();
+
+    if(isset($_GET['error'])){
+        echo "<script>alert('Usuario ou contrasinal incorrecto');</script>";
+    }
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +16,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 </head>
 <body>
-    <form method="GET" action="login.php">
+    <form method="GET" action="datos.php">
         <label>Usuario: </label>
         <input type="text" name="usuario">
         <br>
@@ -16,20 +25,5 @@
         <button type="submit" name="enviar">Enviar</button>
         <br><br>
     </form>
-    <?php
-        if (isset($_GET['enviar'])) {
-            $servidor="db";
-            $usuario= $_GET['usuario'];
-            $passwd= $_GET['contrasinal'];
-            $base="Empresa";
-            try {
-                $pdo = new PDO("mysql:host=$servidor;dbname=$base;charset=utf8mb4", $usuario, $passwd);
-                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                echo "Conexión correcta";
-            } catch (Exception $e) {
-                echo "Erro ao conectar co servidor MySQL, usuario ou contrasinal incorrectos";
-            }
-        }
-    ?>
 </body>
 </html>
