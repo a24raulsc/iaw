@@ -1,0 +1,131 @@
+﻿*
+{	margin:0; 
+	padding:0;
+}
+
+html, body
+{
+height:100%;
+min-height:100%;
+color:yellow;
+
+}
+
+body
+{
+background-color: black;	
+font-family:Arial,Serif;
+font-size:13px;
+}
+input[type="submit"]
+{
+width:230px;
+
+}
+p, hr
+{
+margin:5px 0;
+
+}
+form .busca
+{
+width:100px;
+}
+
+
+#contenedor
+{
+display:grid;
+background-color:white;
+grid-template-columns:auto 450px 300px auto;
+grid-template-rows:50px 354px auto;
+grid-gap:2px;
+min-height:100%;
+
+
+
+}
+
+header
+{
+grid-column-start:2;
+grid-column-end:4;
+grid-row-start:1;
+grid-row-end:2;
+
+background-image:url("cabeceira Concertos.jpg");
+text-align:center;
+color:black;
+line-height:50px;
+}
+
+#foto
+{
+
+/*COMPLETAR AQUÍ  */
+
+
+background-image:url("guitar.jpg");
+background-size:cover;
+
+}
+
+#taboa
+{
+grid-column-start:2;
+grid-column-end:4;
+grid-row-start:3;
+grid-row-end:4;
+background-color: black ;
+padding:10px;
+}
+#formulario
+{
+
+
+/*COMPLETAR AQUÍ  */
+
+
+padding:20px;
+background-color:black;
+}
+
+
+
+#esquerda
+{
+grid-column-start:1;
+grid-column-end:2;
+grid-row-start:1;
+grid-row-end:4;
+background-color:black;
+background-image:url("notasLateral.jpg");
+}
+#dereita
+{
+grid-column-start:4;
+grid-column-end:5;
+grid-row-start:1;
+grid-row-end:4;
+background-color:black;
+background-image:url("notasLateral.jpg");
+}
+
+
+table
+{
+border-collapse:collapse;
+width:600px;
+margin: 0px auto;
+}
+
+hr
+{
+color:white;
+}
+
+td,th
+{border-color:white; border-style:solid;
+border-width:1px; 
+padding:2px 5px;
+font-size:13px;}

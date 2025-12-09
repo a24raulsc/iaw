@@ -119,4 +119,4 @@
         echo"<div class=\"centrar\">O número de exemplares atopados é: $total</div>";
     ?>
 </body>
-</html>
+</html> 
