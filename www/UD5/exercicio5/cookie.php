@@ -6,11 +6,19 @@
         header("Location: cookie.php");
     }
 
+    if (isset($_GET['borrar'])) {
+        foreach ($_COOKIE as $key => $value) {
+            setcookie($key, $value, time() - 1); 
+        }
+        header("Location: cookie.php");
+    }
+
     foreach ($_COOKIE as $key => $value) {
         echo "<p>Cookie: $key</p>";
         echo "<p>Valor: $value </p>";
         echo str_repeat("-", 30);   
     }
+
 ?>
 
 <!DOCTYPE html>
@@ -32,5 +40,7 @@
         <br><br>
         <input type="submit" name="enviar">
     </form>
+    <form action="cookie.php" method="get">
+        <button type="submit" name="borrar">Borrar Cookies</input>
 </body>
 </html>

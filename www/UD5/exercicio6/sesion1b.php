@@ -12,14 +12,11 @@ session_start();
 <?php
 /* PODEMOS ACCEDER Á VARIABLE */
 echo "O usuario é ",$_SESSION['usuario'];
-$usuario = $_GET['usuario'];
-$contrasinal = $_GET['contrasinal'];
-$datos = array("nome"=>$usuario, "contrasinal"=>$contrasinal);
-$_SESSION['datos'] = $datos;
 echo "sesion id: " . session_id();
 ?>
 <h2>Estou na páxina 1b!! </h2>
 <a href="sesion1a.php">Ir a sesion1a</a>
 <br>
+<a href="pechar.php">Pechar sesión</a>
 </body>
 </html>

@@ -26,6 +26,8 @@ foreach ($_SESSION['datos'] as $k => $v) {
         echo $k . " " . $v . "<br>" . " ";
 
 }
+
+echo "sesion id: " . session_id();
 ?>
 <h2>Estou na páxina 1a!! </h2>
 <a href="sesion1b.php">Ir a sesion1b </a>
