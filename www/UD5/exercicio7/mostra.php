@@ -11,6 +11,13 @@ echo "<style>
         }
         th, td {
             padding: 10px;
+            height: 70%
+            width: 70%
+        }
+        td img {
+        max-height: 200px; /* asegura que la imagen no rompa la altura */
+        width: auto;
+        display: block;
         }
       </style>";
 
@@ -30,7 +37,7 @@ $pdoStatement->execute();
 echo "<table>";
 echo "<tr><th>IDproduto</th><th>Nome</th><th>Descrición</th><th>Familia</th><th>imaxe</th><th>Comentar</th></tr>";
 while ($fila = $pdoStatement->fetch()) {
-    echo "<tr><td>".$fila['idProduto']."</td><td>".$fila['nome']."</td><td>".$fila['descripcion']."</td><td>".$fila['familia']."</td><td><img src=".$fila['imaxe']."></td><td><form method='get' action='comenta.php'><button name='idProduto' value='".$fila['idProduto']."'>Comentar</button></form></td></tr>";
+    echo "<tr><td>".$fila['idProduto']."</td><td>".$fila['nome']."</td><td>".$fila['descripcion']."</td><td>".$fila['familia']."</td><td><img src=imaxes/".$fila['imaxe']."></td><td><form method='get' action='comenta.php'><button name='idProduto' value='".$fila['idProduto']."'>Comentar</button></form></td></tr>";
 }
 echo "</table>";
 
