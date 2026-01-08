@@ -2,6 +2,7 @@
 session_start();
 
 echo "<h1>Hola de nuevo " . $_SESSION['usuario'] . "</h1><br>";
+echo "<a href='pechar.php'>Pechar sesión</a><br><br>";
 
 echo "<style>
         table, th, td {
@@ -20,7 +21,7 @@ $pdoStatement->execute();
 $fila = $pdoStatement->fetch();
 $rol = $fila['rol'];
 
-if ($rol == 'moderador') {
+if ($rol == 'moderador' or $rol == 'administrador') {
     echo "<a href='xestiona.php'>Xestionar comentarios</a><br><br>";
 }
 
@@ -33,6 +34,6 @@ while ($fila = $pdoStatement->fetch()) {
 }
 echo "</table>";
 
-if ($_GET['comentado'] == 'true') {
+if (isset($_GET['comentado']) && $_GET['comentado'] == 'true') {
     echo "<script>alert('Comentario realizado correctamente. Grazas pola súa contribución.');</script>";
 }

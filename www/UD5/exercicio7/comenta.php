@@ -11,7 +11,14 @@ if (isset($_GET['comentario'])) {
     $id = $_COOKIE['idProduto'];
     
     $pdo = new PDO("mysql:host=db;dbname=tarefa5.7;charset=utf8mb4", "tarefa", "Tarefa5.7");
-    $pdoStatement = $pdo->prepare("INSERT INTO comentarios (usuario, idProduto, comentario, datacreacion, datamoderacion, moderado) VALUES (:usuario, :id, :comentario, NOW(), NULL, 'non')");
+    $pdoStatement = $pdo->prepare("SELECT MAX(idcomentario) AS max_id FROM comentarios");
+    $pdoStatement->execute();
+    $fila = $pdoStatement->fetch();
+    $max_id = $fila['max_id'];
+    $nuevo_id = $max_id + 1;
+    
+    $pdoStatement = $pdo->prepare("INSERT INTO comentarios (idcomentario, usuario, idProduto, comentario, datacreacion, datamoderacion, moderado) VALUES (:nuevo_id, :usuario, :id, :comentario, NOW(), NULL, 'non')");
+    $pdoStatement->bindParam(':nuevo_id', $nuevo_id);
     $pdoStatement->bindParam(':usuario', $usuario);
     $pdoStatement->bindParam(':id', $id);
     $pdoStatement->bindParam(':comentario', $comentario);

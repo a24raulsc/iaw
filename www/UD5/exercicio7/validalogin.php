@@ -17,6 +17,8 @@ $passwdBD = $fila['contrasinal'];
 if(!password_verify($passwd, $passwdBD)) {
     header('Location: login.php?errorlo=2');
 } else {
+    $pdoStatement = $pdo->prepare("UPDATE usuarios SET ultimaconexion = NOW() WHERE nome like :usuario");
+    $pdoStatement->execute(array(':usuario' => $usuario));
     $_SESSION['usuario'] = $usuario;
     header('Location: mostra.php');
 }

@@ -15,7 +15,12 @@ if (isset($_COOKIE['modo'])) {
 ?>
 <!DOCTYPE html>
 <html>
-
+<style>
+    a{
+        color: red;
+        text-decoration: none;    
+    }
+</style>
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -24,6 +29,7 @@ if (isset($_COOKIE['modo'])) {
 </head>
 
 <body>
+    <h1>Iniciar sesión</h1>
     <form action="validalogin.php" method="get">
         <label>Usuario</label>
         <input type="text" name="usuario">
@@ -44,7 +50,7 @@ if (isset($_COOKIE['modo'])) {
         <input type="submit" name="cookie" value="aplicar">
     </form>
     <br><br><br><br>
-    <a href="rexistro.php">Rexistrarse</a>
+    <a href="rexistro.html">Rexistrarse</a>
     <br><br>
     <a href="pechar.php">Pechar sesión</a>
 </body>
@@ -64,7 +70,7 @@ if (isset($_COOKIE['modo'])) {
         if ($_GET['error'] == 0) {
             echo "<h1>Rexistro realizado correctamente</h1>";
         } else {
-            echo "<h1>Erro no rexistro do usuario</h1>";
+            echo "<h1>Erro no rexistro do usuario, pode que xa exista este usuario</h1>";
         }
     }
     if (isset($_GET['errorlo'])) {
