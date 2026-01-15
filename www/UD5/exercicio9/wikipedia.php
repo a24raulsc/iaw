@@ -25,9 +25,16 @@
             <option value="en">English</option>
             <option value="gl">Galego</option>
         </select>
+        <br><br>
+        <label for="limite">Número de resultados:</label>
+        <input type="number" name="limite" min="1" max="10"/>
+        <br><br>
         </form>
     </div>
     <?php
+    if (isset($_GET['limite'])) {
+        $_SESSION['limite'] = $_GET['limite'];
+    }
     if (isset($_GET['idioma'])) {
         $_SESSION['idioma'] = $_GET['idioma'];
     }
@@ -38,11 +45,12 @@
         $url = "http://" . $_SESSION['idioma'] . ".wikipedia.org/w/api.php";
         $url .= '?action=query';
         $url .= '&list=search';
+        $url .= '&srlimit=' . $_SESSION['limite'];
         $url .= '&format=xml';
         $url .= '&redirects';
         $url .= '&srsearch=' . urlencode($_GET['termo']);
         $lista_paxinas = file_get_contents($url);
-        // file_put_contents('paxina.xml', $lista_paxinas);
+        file_put_contents('paxina.xml', $lista_paxinas);
         echo '
 <hr>
 <div>
@@ -52,7 +60,8 @@
         foreach ($xml->query->search->children() as $pax) {
             $params = 'termo=' . $_GET['termo'];
             $params .= '&pax=' . urlencode($pax['title']);
-            echo "<li><a href='?$params'>" . $pax['title'] . "</a></li>";
+            echo "<li><a href='?$params'>" . $pax['title'] . "</a>" . str_repeat("&nbsp;", 20);
+            echo "<a href='https://" . $_SESSION['idioma'] . ".wikipedia.org/?curid=" . $pax['pageid'] . "'>Acceso Wikipedia</a></li>";
         }
         ?>
         </ul>
