@@ -15,6 +15,13 @@ if (isset($_COOKIE['modo'])) {
     }
 }
 
+if (!isset($_COOKIE['modo'])) {
+     echo "<style>body { background-color: white; color: black; }table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }</style>";
+}
+
 echo "<style>
         th, td {
             padding: 10px;
